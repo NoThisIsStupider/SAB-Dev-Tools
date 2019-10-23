@@ -346,7 +346,7 @@ public class Fixer
 			}
 			else if(currLine.indexOf("d ") >= 0)
 			{
-				matList.get(matList.size()-1).fakeLighting = currLine;
+				//matList.get(matList.size()-1).fakeLighting = currLine;
 			}
 			else if(currLine.indexOf("glow ") >= 0)
 			{

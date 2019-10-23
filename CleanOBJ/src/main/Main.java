@@ -5,11 +5,21 @@ import java.util.ArrayList;
 
 public class Main 
 {
-	public static String objFile = "frame.obj";
-	public static String mtlFile = "frame.mtl";
+	public static String objFile;
+	public static String mtlFile;
 	
 	public static void main(String[] args)
 	{
+		if (args.length == 2)
+		{
+			objFile = args[0];
+			mtlFile = args[1];
+		}
+		else
+		{
+			System.out.println("Wrong arg count, must be the .obj followed by the .mtl.");
+			return;
+		}	
     	if (objFile.toLowerCase().endsWith(".obj") &&
     		mtlFile.toLowerCase().endsWith(".mtl"))
     	{
