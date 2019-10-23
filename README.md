@@ -27,3 +27,9 @@ For parsing the set files of SADX or SA2 in text format, and generating the same
 
 ### WRL to OBJ
 Converts a .wrl model to a .obj and .mtl pair
+
+## Bash Scripts
+
+### WRL to binVCL
+Automates the process of converting a .wrl to .binvcl, also generates a .obj and .mtl pair with vertex colours in the process
+Requires manually updating paths to the various tools needed for it to work
