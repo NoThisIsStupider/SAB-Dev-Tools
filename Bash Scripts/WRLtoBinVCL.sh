@@ -3,10 +3,10 @@
 #ok so, what needs to happen is the .wrl gets run through the wrl to obj, then the obj through CleanOBJ, and then the mtl through my
 #lua mtl thing, and then finally, the obj through binvcl
 
-WRLtoOBJPath="/home/nothisisstupider/SAB/WRLtoOBJConverter" #java main/Main (args) in this dir to run
-CleanOBJPath="/home/nothisisstupider/SAB/Sonic3DGameTools/CleanOBJ/src/" #java main/Main (args) in this dir to run
-MTLFixerPath="/home/nothisisstupider/SAB/SAB2-Tools/Sonic3DGamev3MTLFix/" #lua main.lua (args) in this dir to run
-OBJToBinVCLPath="/home/nothisisstupider/SAB/OBJtoBINVCL/makebuild/" #a.out (args) in this dir to run
+WRLtoOBJPath="/home/nothisisstupider/SAB/SAB-Dev-Tools/WRLtoOBJ/" #java main/Main wrl in this dir to run
+CleanOBJPath="/home/nothisisstupider/SAB/SAB-Dev-Tools/CleanOBJ/src/" #java main/Main obj mtl in this dir to run
+MTLFixerPath="/home/nothisisstupider/SAB/SAB-Dev-Tools/MTLFixer/" #lua main.lua mtl in this dir to run
+OBJToBinVCLPath="/home/nothisisstupider/SAB/SAB-Dev-Tools/OBJtoBinVCL/" #a.out obj in this dir to run
 
 WRLNAMEANDPATH=$1
 WRLNAME=$(basename "${WRLNAMEANDPATH}")

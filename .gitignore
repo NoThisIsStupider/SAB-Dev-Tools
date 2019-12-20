@@ -1,3 +1,8 @@
-.class
+*.class
 SetScanner/bin/
 CleanOBJ/bin/
+*.d
+*.o
+*.out
+*.obj 
+*.mtl
