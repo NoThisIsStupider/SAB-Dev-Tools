@@ -14,7 +14,7 @@ public class SetScanner
 
 	public static void main(String[] args)
 	{
-		String level = "SkyRailSAB";
+		String level = "PyramidCaveSAB";
 		
 		String s = "SET/"+level+"SET.txt";
 		File file = new File(s);
@@ -52,13 +52,14 @@ public class SetScanner
 				//parseWeaponsBed       (type, xrotDeg, yrotDeg, zrotDeg, x, y, z, var1, var2, var3);
 				//parseGreenHill        (type, xrotDeg, yrotDeg, zrotDeg, x, y, z, var1, var2, var3);
 				//parsePyramidCave      (type, xrotDeg, yrotDeg, zrotDeg, x, y, z, var1, var2, var3);
-				parseSkyRail          (type, xrotDeg, yrotDeg, zrotDeg, x, y, z, var1, var2, var3);
+				//parseSkyRail          (type, xrotDeg, yrotDeg, zrotDeg, x, y, z, var1, var2, var3);
 				//parseCityEscape       (type, xrotDeg, yrotDeg, zrotDeg, x, y, z, var1, var2, var3);
 				//parseGreenForest      (type, xrotDeg, yrotDeg, zrotDeg, x, y, z, var1, var2, var3);
 				//parseWildCanyon       (type, xrot, yrot, zrot, xrotDeg, yrotDeg, zrotDeg, x, y, z, var1, var2, var3);
 				//parseDryLagoon        (type, xrot, yrot, zrot, xrotDeg, yrotDeg, zrotDeg, x, y, z, var1, var2, var3);
 				//parseMeteorHerd       (type, xrot, yrot, zrot, xrotDeg, yrotDeg, zrotDeg, x, y, z, var1, var2, var3);
 				//parsePumpkinHill      (type, xrot, yrot, zrot, xrotDeg, yrotDeg, zrotDeg, x, y, z, var1, var2, var3);
+				parsePyramidCave	(type, xrotDeg, yrotDeg, zrotDeg, x, y, z, var1, var2, var3);
 			}
 			
 			input.close();
@@ -1140,72 +1141,6 @@ public class SetScanner
 		}
 	}
 	
-	public static void parsePyramidCave(String type, 
-			  float xrot, float yrot, float zrot,
-			  float x,    float y,    float z,
-			  float var1, float var2, float var3)
-	{
-		x = x*1.45f;
-		y = y*1.45f;
-		z = z*1.45f;
-		
-		y = y+7500.0f;
-		
-		if (type.equals("0") || type.equals("F")) //single ring
-		{
-			outSingleRing(x, y, z, xrot, yrot, zrot, var1, var2, var3);
-		}
-		else if (type.equals("1")) //line of rings
-		{
-			outRingLineSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3);
-		}
-		else if (type.equals("2")) //Ring circle
-		{
-			outRingCircleSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3);
-		}
-		else if (type.equals("3") || type.equals("4")) //Spring
-		{
-			outSpringSA2(x, y+5, z, xrot, yrot, zrot, var1, var2, var3);
-		}
-		else if (type.equals("5")) //3 Springs
-		{
-			outTripleSpringSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3);
-		}
-		else if (type.equals("6")) //Speed Ramp
-		{
-			outSpeedRampSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3);
-		}
-		else if (type.equals("7")) //Dashpad
-		{
-			outDashpadSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3);
-		}
-		else if (type.equals("38") || type.equals("39") || type.equals("3A") || type.equals("3B") || type.equals("3C")) //Beetle, Gold, Moving beetle, gun hawk
-		{
-			outSpinner(x, y, z, xrot, yrot, zrot, var1, var2, var3);
-		}
-		else if (type.equals("37")) //Spikeball Spin
-		{
-			outSpikeballSpinSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3);
-		}
-		else if (type.equals("A") || type.equals("B") || type.equals("C")) //Item Box
-		{
-			int boxType = 0;
-			if (type.equals("A"))
-			{
-				boxType = 0;
-			}
-			else if (type.equals("B"))
-			{
-				boxType = 1;
-			}
-			else if (type.equals("C"))
-			{
-				boxType = 1;
-			}
-			outItemCapsuleSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3, boxType);
-		}
-	}
-	
 	public static void parseSkyRail(String type, 
 			  float xrot, float yrot, float zrot,
 			  float x,    float y,    float z,
@@ -1336,6 +1271,86 @@ public class SetScanner
 			}
 			outItemCapsuleSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3, boxType);
 		}
+	}
+
+	public static void parsePyramidCave(String type, 
+			  float xrot, float yrot, float zrot,
+			  float x,    float y,    float z,
+			  float var1, float var2, float var3)
+	{
+		if (type.equals("0")) //single ring
+		{
+			outSingleRing(x, y, z, xrot, yrot, zrot, var1, var2, var3);
+		}
+		else if (type.equals("1")) //line of rings
+		{
+			outRingLineSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3);
+		}
+		else if (type.equals("2")) //Ring circle
+		{
+			outRingCircleSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3);
+		}
+		else if (type.equals("3") || type.equals("2")) //Spring
+		{
+			outSpringSA2(x, y+5, z, xrot, yrot, zrot, var1, var2, var3);
+		}
+		else if (type.equals("5")) //3 Springs
+		{
+			outTripleSpringSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3);
+		}
+		else if (type.equals("6")) //Speed Ramp
+		{
+			outSpeedRampSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3);
+		}
+		else if (type.equals("15")) //Rocket
+		{
+			outRocket(x, y, z, xrot, yrot, zrot, var1, var2, var3);
+		}
+		else if (type.equals("7")) //Dashpad
+		{
+			outDashpadSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3);
+		}
+		else if (type.equals("8")) //Checkpoint
+		{
+			outCheckpointSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3);
+		}
+		else if (type.equals("3B") || type.equals("3C")) //Moving Beetle, Gold
+		{
+			outSpinner(x, y, z, xrot, yrot, zrot, var1, var2, var3);
+		}
+		else if (type.equals("37")) //Spikeball Spin
+		{
+			outSpikeballSpinSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3);
+		}
+		else if (type.equals("A") || type.equals("B") || type.equals("C")) //Item Box
+		{
+			int boxType = 0;
+			if (type.equals("A"))
+			{
+				boxType = 0;
+			}
+			else if (type.equals("B"))
+			{
+				boxType = 1;
+			}
+			else if (type.equals("C"))
+			{
+				boxType = 1;
+			}
+			outItemCapsuleSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3, boxType);
+		}
+		else if (type.equals("E")) //Goal Ring
+		{
+			outGoalRingSA2(x, y, z, xrot, yrot, zrot, var1, var2, var3);
+		}
+		else if (type.equals("50")) //Wall Eye
+		{
+			//out.add("100 100 "+x+" "+(y)+" "+z+" "+rotX+" "+rotY+" "+rotZ+" "+var1+" "+var2+" "+var3);
+		}
+		else if (type.equals("5A")) //Spider Web
+		{
+			//out.add("100 101 "+x+" "+(y)+" "+z+" "+xrot+" "+yrot+" "+zrot+" "+var1);
+		}	
 	}
 	
 	public static void outEmeraldPiece(float x, float y, float z, int rotX, int rotY, int rotZ, float var1, float var2, float var3, boolean allowDig)
@@ -1682,7 +1697,7 @@ public class SetScanner
 	    Vector3f zAxis = new Vector3f(0, 0, 1);
 	    dir = rotatePoint(dir, zAxis, Math.toRadians(rotZ));
 	    dir = rotatePoint(dir, yAxis, Math.toRadians(rotY));
-	    
+	
 		out.add("11 "+x+" "+y+" "+z+" "+dir.x+" "+dir.y+" "+dir.z+" "+(var1*60)+" "+(var2/60));
 	}
 	

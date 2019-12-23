@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CleanOBJPath="/home/nothisisstupider/SAB/SAB-Dev-Tools/CleanOBJ/src/" #java main/Main (args) in this dir to run
+CleanOBJPath="/home/nothisisstupider/SAB/SAB-Dev-Tools/CleanOBJCLI/src/" #java main/Main (args) in this dir to run
 MTLFixerPath="/home/nothisisstupider/SAB/SAB-Dev-Tools/MTLFixer/" #lua main.lua (args) in this dir to run
 OBJToBinOBJPath="/home/nothisisstupider/SAB/SAB-Dev-Tools/OBJtoBinOBJ/makebuild/" #a.out (args) in this dir to run
 
